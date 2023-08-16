@@ -1,0 +1,37 @@
+import java.util.Scanner;
+
+public class SimpleChatbot {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Hello! I'm a simple chatbot. How can I help you today?");
+        String userInput;
+
+        do {
+            System.out.print("You: ");
+            userInput = scanner.nextLine();
+            String botResponse = getBotResponse(userInput);
+            System.out.println("Bot: " + botResponse);
+        } while (!userInput.equalsIgnoreCase("bye"));
+
+        System.out.println("Bot: Goodbye! Have a great day.");
+    }
+
+    private static String getBotResponse(String userMessage) {
+        userMessage = userMessage.toLowerCase();
+
+        if (userMessage.contains("hello") || userMessage.contains("hi")) {
+            return "Hi there! How can I assist you?";
+        } else if (userMessage.contains("how are you")) {
+            return "I'm just a bot, but I'm here to help!";
+        } else if (userMessage.contains("time")) {
+            return "I'm sorry, I don't have real-time capabilities.";
+        } else if (userMessage.contains("weather")) {
+            return "I can't check the weather, but I hope it's nice wherever you are!";
+        } else if (userMessage.contains("bye")) {
+            return "Goodbye! Feel free to chat with me anytime.";
+        } else {
+            return "I'm not sure how to respond to that. Can you please rephrase?";
+        }
+    }
+}
